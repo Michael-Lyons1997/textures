@@ -41,7 +41,7 @@ typedef struct
 	float texel[2];
 } Vertex;
 
-Vertex vertex[3];
+Vertex vertex[6];
 GLubyte triangles[3];
 
 /* Variable to hold the VBO identifier and shader data */
@@ -94,6 +94,18 @@ void Game::initialize()
 	vertex[2].coordinate[1] = 0.5f;
 	vertex[2].coordinate[2] = 0.0f;
 
+	vertex[3].coordinate[0] = 0.5f;
+	vertex[3].coordinate[1] = 0.5f;
+	vertex[3].coordinate[2] = 0.0f;
+
+	vertex[4].coordinate[0] = -0.5f;
+	vertex[4].coordinate[1] = -0.5f;
+	vertex[4].coordinate[2] = 0.0f;
+
+	vertex[5].coordinate[0] = 0.5f;
+	vertex[5].coordinate[1] = -0.5f;
+	vertex[5].coordinate[2] = 0.0f;
+
 	vertex[0].color[0] = 1.0f;
 	vertex[0].color[1] = 0.0f;
 	vertex[0].color[2] = 0.0f;
@@ -109,6 +121,21 @@ void Game::initialize()
 	vertex[2].color[2] = 0.0f;
 	vertex[2].color[3] = 0.0f;
 
+	vertex[3].color[0] = 1.0f;
+	vertex[3].color[1] = 0.0f;
+	vertex[3].color[2] = 0.0f;
+	vertex[3].color[3] = 1.0f;
+
+	vertex[4].color[0] = 1.0f;
+	vertex[4].color[1] = 0.0f;
+	vertex[4].color[2] = 0.0f;
+	vertex[4].color[3] = 1.0f;
+
+	vertex[5].color[0] = 1.0f;
+	vertex[5].color[1] = 0.0f;
+	vertex[5].color[2] = 0.0f;
+	vertex[5].color[3] = 0.0f;
+
 	vertex[0].texel[0] = 0.5f;
 	vertex[0].texel[1] = 0.5f;
 
@@ -118,8 +145,19 @@ void Game::initialize()
 	vertex[2].texel[0] = 1.0f;
 	vertex[2].texel[1] = 0.0f;
 
+	vertex[3].texel[0] = 0.5f;
+	vertex[3].texel[1] = 0.5f;
+
+	vertex[4].texel[0] = 1.0f;
+	vertex[4].texel[1] = 1.0f;
+
+	vertex[5].texel[0] = 1.0f;
+	vertex[5].texel[1] = 0.0f;
+
 	/*Index of Poly / Triangle to Draw */
 	triangles[0] = 0;   triangles[1] = 1;   triangles[2] = 2;
+
+	triangles[3] = 3;   triangles[4] = 4;   triangles[5] = 5;
 
 	/* Create a new VBO using VBO id */
 	glGenBuffers(1, vbo);
@@ -283,7 +321,7 @@ void Game::update()
 	}
 
 	//Change vertex data
-	vertex[0].coordinate[0] += -0.0001f;
+	/*vertex[0].coordinate[0] += -0.0001f;
 	vertex[0].coordinate[1] += -0.0001f;
 	vertex[0].coordinate[2] += -0.0001f;
 
@@ -294,6 +332,18 @@ void Game::update()
 	vertex[2].coordinate[0] += -0.0001f;
 	vertex[2].coordinate[1] += -0.0001f;
 	vertex[2].coordinate[2] += -0.0001f;
+
+	vertex[3].coordinate[0] += -0.0001f;
+	vertex[3].coordinate[1] += -0.0001f;
+	vertex[3].coordinate[2] += -0.0001f;
+
+	vertex[4].coordinate[0] += -0.0001f;
+	vertex[4].coordinate[1] += -0.0001f;
+	vertex[4].coordinate[2] += -0.0001f;
+
+	vertex[5].coordinate[0] += -0.0001f;
+	vertex[5].coordinate[1] += -0.0001f;
+	vertex[5].coordinate[2] += -0.0001f;*/
 
 #if (DEBUG >= 2)
 	DEBUG_MSG("Update up...");
@@ -337,7 +387,7 @@ void Game::render()
 	glEnableVertexAttribArray(colorID);
 	glEnableVertexAttribArray(texelID);
 
-	glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_BYTE, (char*)NULL + 0);
+	glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_BYTE, (char*)NULL + 0);
 
 	window.display();
 
